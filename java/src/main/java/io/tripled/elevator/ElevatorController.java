@@ -13,9 +13,7 @@ public class ElevatorController {
         doorsOpen(currentFloor);
     }
 
-    public int getCurrentElevatorFloor() {
-        return currentFloor;
-    }
+    public int getCurrentElevatorFloor() { return currentFloor; }
 
     private void moveLift(int currentPos, int destinationPos) {
         do {
