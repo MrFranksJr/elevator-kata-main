@@ -1,5 +1,8 @@
 package io.tripled.elevator;
 
 public enum Floor {
-    FLOOR_3, GROUND
+    GROUND,
+    FLOOR_1,
+    FLOOR_2,
+    FLOOR_3
 }
