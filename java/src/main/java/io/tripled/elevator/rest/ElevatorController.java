@@ -4,6 +4,8 @@ import io.tripled.elevator.Elevator;
 import io.tripled.elevator.Feedback;
 import io.tripled.elevator.Floor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.invoke.CallSite;
@@ -34,6 +36,13 @@ public class ElevatorController {
     }
     public record GetResponse(Floor currentFloor, List<Floor> doorsOpened, List<Floor> floorsPassed) {
 
-
     }
+
+    @PutMapping("/api/elevator")
+    GetResponse moveElevator(@RequestBody ChangeFloorRequest request) {
+        elevator.call(request.originFloor, request.targetFloor);
+        return new GetResponse(elevator.currentFloor(), doorsOpened, floorsPassed);
+    }
+    public record ChangeFloorRequest(Floor originFloor, Floor targetFloor) { }
+
 }
