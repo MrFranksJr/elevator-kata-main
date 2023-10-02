@@ -1,20 +1,26 @@
 package io.tripled.elevator;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import java.util.Scanner;
 
 import static io.tripled.elevator.CallParser.CALL_PARSER;
 
+@SpringBootApplication
 public class ElevatorApplication {
 
     public static final String QUIT_MESSAGE = "*****************END*****************";
     private final ElevatorController controller = new ElevatorController();
 
     public static void main(String[] args) {
-        System.out.println("**************************");
-        System.out.println("**    Elevator Kata     **");
-        System.out.println("**************************");
-        System.out.println(System.lineSeparator() + "Go ahead and enter your command: " + System.lineSeparator());
-        readInput();
+        SpringApplication.run(ElevatorApplication.class, args);
+//        System.out.println("**************************");
+//        System.out.println("**    Elevator Kata     **");
+//        System.out.println("**************************");
+//        System.out.println(System.lineSeparator() + "Go ahead and enter your command: " + System.lineSeparator());
+//        readInput();
     }
 
     public static void readInput() {
