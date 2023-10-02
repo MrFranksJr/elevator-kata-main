@@ -15,11 +15,13 @@ public class Elevator {
         return currentFloor;
     }
 
-    public void call(Floor floor) {
-        this.currentFloor = floor;
-        feedback.floorPassed(FLOOR_1);
-        feedback.floorPassed(FLOOR_2);
-        feedback.floorPassed(FLOOR_3);
+    public void call(Floor targetFloor) {
+
+        do {
+            currentFloor = currentFloor.goUp();
+            feedback.floorPassed(currentFloor);
+        } while (targetFloor != currentFloor);
+
         feedback.doorOpened(this.currentFloor);
     }
 

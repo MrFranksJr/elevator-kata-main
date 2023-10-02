@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static io.tripled.elevator.Floor.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ElevatorTest {
@@ -20,17 +21,26 @@ class ElevatorTest {
 
     @Test
     void newElevatorStartsAtGroundFloor() {
-        assertEquals(Floor.GROUND, elevator.currentFloor());
+        assertEquals(GROUND, elevator.currentFloor());
     }
 
     @Test
     void elevatorCanTravelFromGroundTo3thFloor() {
         // When there is a call from floor3 to go to basement
-        elevator.call(Floor.FLOOR_3);
+        elevator.call(FLOOR_3);
 
         // Then the doors should open at floor3
-        assertEquals(Floor.FLOOR_3, elevator.currentFloor());
-        assertEquals(Floor.FLOOR_3, testFeedback.lastFloorDoorsOpened());
-        assertEquals(List.of(Floor.FLOOR_1, Floor.FLOOR_2, Floor.FLOOR_3), testFeedback.allFloorsPassed());
+        assertEquals(FLOOR_3, elevator.currentFloor());
+        assertEquals(FLOOR_3, testFeedback.lastFloorDoorsOpened());
+        assertEquals(List.of(FLOOR_1, FLOOR_2, FLOOR_3), testFeedback.allFloorsPassed());
+    }
+
+    @Test
+    void elevatorCanTravelToTheSecondFloor() {
+        elevator.call(FLOOR_2);
+
+        assertEquals(FLOOR_2, elevator.currentFloor());
+        assertEquals(FLOOR_2, testFeedback.lastFloorDoorsOpened());
+        assertEquals(List.of(FLOOR_1, FLOOR_2), testFeedback.allFloorsPassed());
     }
 }
