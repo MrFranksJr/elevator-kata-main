@@ -23,8 +23,20 @@ public enum Floor {
                 .orElse(null);
     }
 
-    public Floor goUp() {
+    public Floor move(Floor target) {
+        return shouldDecend(target) ? down() : up();
+    }
+
+    private Floor up() {
         return Floor.bySequence(this.sequence + 1);
+    }
+
+    private Floor down() {
+        return Floor.bySequence(this.sequence - 1);
+    }
+
+    private boolean shouldDecend(Floor target) {
+        return this.sequence > target.sequence;
     }
 
     boolean reached(Floor currentFloor) {

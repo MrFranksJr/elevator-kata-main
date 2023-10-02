@@ -54,4 +54,13 @@ class ElevatorTest {
         assertEquals(List.of(FLOOR_2, FLOOR_3), testFeedback.allFloorsWhereDoorsOpened());
         assertEquals(List.of(FLOOR_1, FLOOR_2, FLOOR_3), testFeedback.allFloorsPassed());
     }
+
+    @Test
+    void elevatorCanTravelFromThirdFloorToBasement() {
+        elevator.call(FLOOR_3, BASEMENT);
+
+        assertEquals(BASEMENT, elevator.currentFloor());
+        assertEquals(List.of(FLOOR_3, BASEMENT), testFeedback.allFloorsWhereDoorsOpened());
+        assertEquals(List.of(FLOOR_1, FLOOR_2, FLOOR_3, FLOOR_2, FLOOR_1, GROUND, BASEMENT), testFeedback.allFloorsPassed());
+    }
 }

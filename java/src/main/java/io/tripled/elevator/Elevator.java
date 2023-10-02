@@ -22,12 +22,12 @@ public class Elevator {
         moveTo(target);
     }
 
-    private void moveTo(Floor origin) {
-        while (currentFloor.notReached(origin)) {
-            currentFloor = currentFloor.goUp();
+    private void moveTo(Floor target) {
+        while (currentFloor.notReached(target)) {
+            currentFloor = currentFloor.move(target);
             feedback.floorPassed(currentFloor);
 
-            if (currentFloor.reached(origin)){
+            if (currentFloor.reached(target)){
                 feedback.doorOpened(this.currentFloor);
             }
         }
