@@ -1,0 +1,41 @@
+PUT http://localhost:8080/api/elevator
+Content-Type: application/json
+Content-Length: 57
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "originFloor": "FLOOR_2",
+  "targetFloor": "GROUND"
+}
+
+<> 2023-10-02T145129.200.json
+
+###
+
+PUT http://localhost:8080/api/elevator
+Content-Type: application/json
+Content-Length: 59
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "originFloor": "FLOOR_3",
+  "targetFloor": "BASEMENT"
+}
+
+<> 2023-10-02T145105.200.json
+
+###
+
+GET http://localhost:8080/api/elevator
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-02T144922.200.json
+
+###
+

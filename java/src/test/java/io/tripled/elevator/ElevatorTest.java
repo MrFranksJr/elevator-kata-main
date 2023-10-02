@@ -10,12 +10,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ElevatorTest {
 
-    private TestFeedback testFeedback;
+    private TestElevatorFeedback testFeedback;
     private Elevator elevator;
 
     @BeforeEach
     void setUp() {
-        testFeedback = new TestFeedback();
+        testFeedback = new TestElevatorFeedback();
         elevator = new Elevator(testFeedback);
     }
 
@@ -27,7 +27,7 @@ class ElevatorTest {
     @Test
     void elevatorCanTravelFromGroundTo3thFloor() {
         // When there is a call from floor3 (to go to basement)
-        elevator.call(FLOOR_3);
+        elevator.call(FLOOR_3, FLOOR_3);
 
         // Then the doors should open at floor3
         assertEquals(FLOOR_3, elevator.currentFloor());
@@ -37,7 +37,7 @@ class ElevatorTest {
 
     @Test
     void elevatorCanTravelToTheSecondFloor() {
-        elevator.call(FLOOR_2);
+        elevator.call(FLOOR_2, FLOOR_2);
 
         assertEquals(FLOOR_2, elevator.currentFloor());
         assertEquals(List.of(FLOOR_2), testFeedback.allFloorsWhereDoorsOpened());

@@ -1,0 +1,9 @@
+GET http://localhost:8080/api/elevator
+###
+PUT http://localhost:8080/api/elevator
+Content-Type: application/json
+
+{
+  "originFloor": "FLOOR_2",
+  "targetFloor": "GROUND"
+}

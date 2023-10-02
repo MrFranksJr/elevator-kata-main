@@ -3,7 +3,7 @@ package io.tripled.elevator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestFeedback implements Feedback {
+public class TestElevatorFeedback implements ElevatorFeedback {
 
     private List<Floor> openedDoors = new ArrayList<>();
     private List<Floor> passedFloors = new ArrayList<>();

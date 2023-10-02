@@ -1,14 +1,13 @@
 package io.tripled.elevator.rest;
 
 import io.tripled.elevator.Elevator;
-import io.tripled.elevator.Feedback;
+import io.tripled.elevator.ElevatorFeedback;
 import io.tripled.elevator.Floor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.lang.invoke.CallSite;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +17,7 @@ public class ElevatorController {
     private static final List<Floor> floorsPassed = new ArrayList<>();
     private static final List<Floor> doorsOpened = new ArrayList<>();
 
-    private Elevator elevator = new Elevator(new Feedback() {
+    private Elevator elevator = new Elevator(new ElevatorFeedback() {
         @Override
         public void doorOpened(Floor floor) {
             doorsOpened.add(floor);

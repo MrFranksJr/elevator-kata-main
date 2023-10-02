@@ -24,7 +24,7 @@ public enum Floor {
     }
 
     public Floor move(Floor target) {
-        return shouldDecend(target) ? down() : up();
+        return shouldDescend(target) ? down() : up();
     }
 
     private Floor up() {
@@ -35,7 +35,7 @@ public enum Floor {
         return Floor.bySequence(this.sequence - 1);
     }
 
-    private boolean shouldDecend(Floor target) {
+    private boolean shouldDescend(Floor target) {
         return this.sequence > target.sequence;
     }
 
