@@ -3,6 +3,8 @@ package io.tripled.elevator;
 import java.util.stream.Stream;
 
 public enum Floor {
+    BASEMENT(-1),
+
     GROUND(0),
     FLOOR_1(1),
     FLOOR_2(2),
@@ -23,5 +25,13 @@ public enum Floor {
 
     public Floor goUp() {
         return Floor.bySequence(this.sequence + 1);
+    }
+
+    boolean reached(Floor currentFloor) {
+        return this == currentFloor;
+    }
+
+    boolean notReached(Floor currentFloor) {
+        return this != currentFloor;
     }
 }

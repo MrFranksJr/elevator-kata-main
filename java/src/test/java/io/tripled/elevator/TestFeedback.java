@@ -1,17 +1,16 @@
 package io.tripled.elevator;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class TestFeedback implements Feedback {
 
-    private Floor floor;
+    private List<Floor> openedDoors = new ArrayList<>();
     private List<Floor> passedFloors = new ArrayList<>();
 
     @Override
     public void doorOpened(Floor floor){
-        this.floor = floor;
+        this.openedDoors.add(floor);
     }
 
     @Override
@@ -19,8 +18,8 @@ public class TestFeedback implements Feedback {
         passedFloors.add(floor);
     }
 
-    public Floor lastFloorDoorsOpened() {
-        return floor;
+    public List<Floor> allFloorsWhereDoorsOpened() {
+        return openedDoors;
     }
 
     public List<Floor> allFloorsPassed() {

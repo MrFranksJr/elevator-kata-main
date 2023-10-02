@@ -26,12 +26,12 @@ class ElevatorTest {
 
     @Test
     void elevatorCanTravelFromGroundTo3thFloor() {
-        // When there is a call from floor3 to go to basement
+        // When there is a call from floor3 (to go to basement)
         elevator.call(FLOOR_3);
 
         // Then the doors should open at floor3
         assertEquals(FLOOR_3, elevator.currentFloor());
-        assertEquals(FLOOR_3, testFeedback.lastFloorDoorsOpened());
+        assertEquals(List.of(FLOOR_3), testFeedback.allFloorsWhereDoorsOpened());
         assertEquals(List.of(FLOOR_1, FLOOR_2, FLOOR_3), testFeedback.allFloorsPassed());
     }
 
@@ -40,7 +40,18 @@ class ElevatorTest {
         elevator.call(FLOOR_2);
 
         assertEquals(FLOOR_2, elevator.currentFloor());
-        assertEquals(FLOOR_2, testFeedback.lastFloorDoorsOpened());
+        assertEquals(List.of(FLOOR_2), testFeedback.allFloorsWhereDoorsOpened());
         assertEquals(List.of(FLOOR_1, FLOOR_2), testFeedback.allFloorsPassed());
+    }
+
+    @Test
+    void elevatorCanTravelFromGroundTo2ndFloorToGoTo3Th() {
+        // When there is a call from floor3 to go to basement
+        elevator.call(FLOOR_2, FLOOR_3);
+
+        // Then the doors should open at floor3
+        assertEquals(FLOOR_3, elevator.currentFloor());
+        assertEquals(List.of(FLOOR_2, FLOOR_3), testFeedback.allFloorsWhereDoorsOpened());
+        assertEquals(List.of(FLOOR_1, FLOOR_2, FLOOR_3), testFeedback.allFloorsPassed());
     }
 }

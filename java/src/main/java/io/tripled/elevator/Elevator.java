@@ -1,7 +1,5 @@
 package io.tripled.elevator;
 
-import static io.tripled.elevator.Floor.*;
-
 public class Elevator {
 
     private final Feedback feedback;
@@ -16,13 +14,23 @@ public class Elevator {
     }
 
     public void call(Floor targetFloor) {
+        call(targetFloor, targetFloor);
+    }
 
-        do {
+    public void call(Floor origin, Floor target) {
+        moveTo(origin);
+        moveTo(target);
+    }
+
+    private void moveTo(Floor origin) {
+        while (currentFloor.notReached(origin)) {
             currentFloor = currentFloor.goUp();
             feedback.floorPassed(currentFloor);
-        } while (targetFloor != currentFloor);
 
-        feedback.doorOpened(this.currentFloor);
+            if (currentFloor.reached(origin)){
+                feedback.doorOpened(this.currentFloor);
+            }
+        }
     }
 
 }
